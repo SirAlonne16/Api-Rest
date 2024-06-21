@@ -16,6 +16,6 @@ use App\Http\Controllers\ClienteController;
 */
 Route::get('/crear-cliente', [ClienteController::class, 'formularioCrear'])->name('formulario_crear_cliente');
 Route::post('/guardar-cliente', [ClienteController::class, 'guardarCliente'])->name('guardar_cliente');
-Route::get('/', function () {
+Route::get('', function () {
     return view('welcome');
 });
