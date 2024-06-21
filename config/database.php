@@ -95,9 +95,12 @@ return [
 
         'mongodb'=>[
             'driver' => 'mongodb',
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'dsn' => env('DB_URI',) ,
-            'database' => env('DB_DATABASE')
+            'host' => env('DB_HOST'),
+            'dsn' => env('DB_URI') ,
+            'port' => env('DB_PORT', 27017),
+            'database' => env('DB_DATABASE'),
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
         ],
 
     ],
