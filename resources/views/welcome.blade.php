@@ -72,13 +72,19 @@
                         <div>{{ session('error') }}</div>
                     @endif
 
-                    <form action="{{ route('form.submit') }}" method="POST">
+                    <form action="{{ route('guardar_cliente') }}" method="POST">
                         @csrf
-                        <label for="field1">Campo 1:</label>
-                        <input type="text" id="field1" name="field1" required>
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required>
                         <br>
-                        <label for="field2">Campo 2:</label>
-                        <input type="email" id="field2" name="field2" required>
+                        <label for="rut">RUT:</label>
+                        <input type="text" id="rut" name="rut" required>
+                        <br>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                        <br>
+                        <label for="talla">Talla:</label>
+                        <input type="text" id="talla" name="talla" required>
                         <br>
                         <button type="submit">Enviar</button>
                     </form>

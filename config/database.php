@@ -97,7 +97,7 @@ return [
             'driver' => 'mongodb',
             'host' => env('DB_HOST', '127.0.0.1'),
             'dsn' => env('DB_URI',) ,
-            'database' => 'skiclub'
+            'database' => env('DB_DATABASE')
         ],
 
     ],
