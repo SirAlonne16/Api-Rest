@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdministradorTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,7 @@ class CreateAdministradorTable extends Migration
         Schema::create('Administrador', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('rut')->unique();
+            $table->string('rut');
             $table->string('email');
             $table->timestamps();
         });
@@ -31,4 +31,4 @@ class CreateAdministradorTable extends Migration
     {
         Schema::dropIfExists('Administrador');
     }
-}
+};
