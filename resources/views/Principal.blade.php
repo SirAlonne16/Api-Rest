@@ -2,17 +2,22 @@
 <html>
 <head>
     <title>Página Principal</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Página Principal</h1>
-    <form method="get" action="{{ route('formulario_crear_admin') }}">
-        <button type="submit">Ir a Administradores</button>
-    </form>
-    <form method="get" action="{{ route('formulario_crear_profe') }}">
-        <button type="submit">Ir a Profesores</button>
-    </form>
-    <form method="get" action="{{ route('formulario_crear_cliente') }}">
-        <button type="submit">Ir a Clientes</button>
-    </form>
+    <div class="container">
+        <h1 class="mt-5">Página Principal</h1>
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <a href="{{ route('formulario_crear_admin') }}" class="btn btn-primary btn-block">Ir a Administradores</a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ route('formulario_crear_profe') }}" class="btn btn-secondary btn-block">Ir a Profesores/a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ route('formulario_crear_cliente') }}" class="btn btn-success btn-block">Ir a Clientes</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

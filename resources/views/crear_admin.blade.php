@@ -23,9 +23,6 @@
     </form>
     <br>
     <br>
-    <h1>Detalles del Administrador</h1>
-    <p><strong>Nombre:</strong> {{ $administrador->nombre }}</p>
-    <p><strong>RUT:</strong> {{ $administrador->rut }}</p>
-    <p><strong>Email:</strong> {{ $administrador->email }}</p>
+
 </body>
 </html>
