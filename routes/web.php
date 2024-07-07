@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ProfeController;
+use App\Http\Controllers\AdministradorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,18 +15,13 @@ use App\Http\Controllers\ProfeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/crear-admin', [AdminController::class, 'formularioCrear'])->name('formulario_crear_admin');
 
-Route::get('/crear-profe', [ProfeController::class, 'formularioCrear'])->name('formulario_crear_profe');
 
 Route::get('/crear-cliente', [ClienteController::class, 'formularioCrear'])->name('formulario_crear_cliente');
-
-Route::post('/guardar-admin', [AdminController::class, 'guardarAdmin'])->name('guardar_admin');
-
-Route::post('/guardar-profe', [ProfeController::class, 'guardarProfe'])->name('guardar_profe');
-
 Route::post('/guardar-cliente', [ClienteController::class, 'guardarCliente'])->name('guardar_cliente');
 
+Route::get('administradores/create', [AdministradorController::class, 'create'])->name('administradores.create');
+Route::post('administradores', [AdministradorController::class, 'store'])->name('administradores.store');
 
 Route::get('', function () {
     return view('Principal');
