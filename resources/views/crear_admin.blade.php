@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Crear Cliente</title>
+    <title>Agregar administrador</title>
 </head>
 <body>
-    <h1>Crear Cliente</h1>
+    <h1>Agregar administrador</h1>
     @if(session('success'))
         <div>{{ session('success') }}</div>
     @endif
-    <form method="post" action="{{ route('guardar_cliente') }}">
+    <form method="post" action="{{ route('guardar_admin') }}">
         @csrf
         <label for="nombre">Nombre:</label><br>
         <input type="text" id="nombre" name="nombre"><br>
@@ -19,10 +19,13 @@
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email"><br>
 
-        <label for="talla">Talla:</label><br>
-        <input type="text" id="talla" name="talla"><br>
-
         <input type="submit" value="Guardar">
     </form>
+    <br>
+    <br>
+    <h1>Detalles del Administrador</h1>
+    <p><strong>Nombre:</strong> {{ $administrador->nombre }}</p>
+    <p><strong>RUT:</strong> {{ $administrador->rut }}</p>
+    <p><strong>Email:</strong> {{ $administrador->email }}</p>
 </body>
 </html>

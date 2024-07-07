@@ -4,35 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Models\Profesores;
+use App\Models\Administrador;
 use App\Http\Requests\StoreClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
 use App\Http\Resources\ClienteCollection;
 use App\Http\Resources\ClienteResource;
 
-class ClienteController extends Controller
+class ProfeController extends Controller
 {
     public function formularioCrear()
     {
-        return view('crear_cliente');
+        return view('crear_profe');
     }
 
-    public function guardarCliente(Request $request)
+    public function guardarProfe(Request $request)
     {
         $request->validate([
             'nombre' => 'required',
             'rut' => 'required',
             'email' => 'required|email',
-            'talla' => 'required',
+
         ]);
 
         $cliente = new Cliente;
         $cliente->nombre = $request->nombre;
         $cliente->rut = $request->rut;
         $cliente->email = $request->email;
-        $cliente->talla = $request->talla;
         $cliente->save();
 
-        return redirect()->route('formulario_crear_cliente')->with('success', 'Cliente creado exitosamente.');
+        return redirect()->route('formulario_crear_profe')->with('success', 'Profesor creado exitosamente.');
     }
     /**
      * Display a listing of the resource.
@@ -43,7 +44,7 @@ class ClienteController extends Controller
     {
         //
         $clientes=Cliente::all();
-        return new ClienteCollection($clientes);
+        return new ProfeController($clientes);
     }
 
     /**
