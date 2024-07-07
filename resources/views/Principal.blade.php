@@ -5,13 +5,13 @@
 </head>
 <body>
     <h1>Página Principal</h1>
-    <form method="get" action="{{ route('vista1') }}">
+    <form method="get" action="{{ route('formulario_crear_admin') }}">
         <button type="submit">Ir a Administradores</button>
     </form>
-    <form method="get" action="{{ route('vista2') }}">
+    <form method="get" action="{{ route('formulario_crear_profe') }}">
         <button type="submit">Ir a Profesores</button>
     </form>
-    <form method="get" action="{{ route('vista3') }}">
+    <form method="get" action="{{ route('formulario_crear_cliente') }}">
         <button type="submit">Ir a Clientes</button>
     </form>
 </body>
