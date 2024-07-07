@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Agregar administrador</title>
+    <title>Crear Administrador</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Agregar administrador</h1>
-    @if(session('success'))
-        <div>{{ session('success') }}</div>
-    @endif
-    <form method="post" action="{{ route('guardar_admin') }}">
-        @csrf
-        <label for="nombre">Nombre:</label><br>
-        <input type="text" id="nombre" name="nombre"><br>
-
-        <label for="rut">Rut:</label><br>
-        <input type="text" id="rut" name="rut"><br>
-
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email"><br>
-
-        <input type="submit" value="Guardar">
-    </form>
-    <br>
-    <br>
-
+    <div class="container">
+        <h1 class="mt-5">Crear Administrador</h1>
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        <form method="POST" action="{{ route('guardar_admin') }}">
+            @csrf
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="rut">RUT</label>
+                <input type="text" class="form-control" id="rut" name="rut" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Administrador</button>
+        </form>
+    </div>
 </body>
 </html>
+
