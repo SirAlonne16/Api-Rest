@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
-
+use App\Http\Controllers\DatosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +14,9 @@ use App\Http\Controllers\ClienteController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::get('/datos', [DatosController::class, 'mostrarDatos']);
 Route::get('/crear-cliente', [ClienteController::class, 'formularioCrear'])->name('formulario_crear_cliente');
 Route::post('/guardar-cliente', [ClienteController::class, 'guardarCliente'])->name('guardar_cliente');
 Route::get('', function () {

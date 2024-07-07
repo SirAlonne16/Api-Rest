@@ -29,3 +29,25 @@ class Cliente extends Model
         return $this->hasMany(Equipo::class);
     }
 }
+class Administrador extends Model
+{
+    protected $connection ='mongodb';
+    protected $collection = 'Administrador';
+    protected $fillable=[
+        'name',
+        'rut',
+        'email'
+    ];
+}
+
+class Profesores extends Model
+{
+    protected $connection ='mongodb';
+    protected $collection = 'Profesores';
+    protected $fillable=[
+        'name',
+        'rut',
+        'email'
+        
+    ];
+}
