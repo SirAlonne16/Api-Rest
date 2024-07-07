@@ -21,13 +21,13 @@ Route::get('/crear-profe', [ProfeController::class, 'formularioCrear'])->name('f
 
 Route::get('/crear-cliente', [ClienteController::class, 'formularioCrear'])->name('formulario_crear_cliente');
 
-Route::post('/guardar-admin', [AdminController::class, 'guardarCliente'])->name('guardarAdmin');
+Route::post('/guardar-admin', [AdminController::class, 'guardarAdmin'])->name('guardar_admin');
 
-Route::post('/guardar-profe', [ProfeController::class, 'guardarCliente'])->name('guardarProfe');
+Route::post('/guardar-profe', [ProfeController::class, 'guardarProfe'])->name('guardar_profe');
 
 Route::post('/guardar-cliente', [ClienteController::class, 'guardarCliente'])->name('guardar_cliente');
 
 
 Route::get('', function () {
-    return view('welcome');
+    return view('Principal');
 });

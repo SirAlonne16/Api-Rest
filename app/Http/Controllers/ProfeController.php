@@ -24,7 +24,7 @@ class ProfeController extends Controller
             'nombre' => 'required',
             'rut' => 'required',
             'email' => 'required|email',
-            'talla' => 'required',
+
         ]);
 
         $cliente = new Cliente;
