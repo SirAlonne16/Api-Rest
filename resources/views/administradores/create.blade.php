@@ -21,7 +21,26 @@
         </div>
         <button type="submit">Guardar</button>
     </form>
+
+    <h2>Administradores</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>RUT</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($administradores as $administrador)
+                <tr>
+                    <td>{{ $administrador->nombre }}</td>
+                    <td>{{ $administrador->rut }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </body>
 </html>
+
 
 

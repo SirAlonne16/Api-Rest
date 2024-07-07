@@ -9,12 +9,16 @@ class AdministradorController extends Controller
 {
     public function create()
     {
-        return view('administradores.create');
+        // Obtener todos los administradores
+        $administradores = Administrador::all();
+
+        // Pasar los administradores a la vista
+        return view('administradores.create', compact('administradores'));
     }
 
     public function store(Request $request)
     {
-        // Log de entrada de datos
+
 
         // Validar los datos del formulario
         $validated = $request->validate([
@@ -23,16 +27,16 @@ class AdministradorController extends Controller
             'email' => 'required|email|max:255|unique:administradores,email',
         ]);
 
-        // Log después de la validación
+  
 
         // Crear un nuevo administrador
         Administrador::create($validated);
 
-        // Log después de intentar crear el administrador
 
         // Redirigir o mostrar un mensaje de éxito
         return redirect()->route('administradores.create')->with('success', 'Administrador creado exitosamente');
     }
 }
+
 
 
