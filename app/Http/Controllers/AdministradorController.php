@@ -14,15 +14,21 @@ class AdministradorController extends Controller
 
     public function store(Request $request)
     {
+        // Log de entrada de datos
+
         // Validar los datos del formulario
         $validated = $request->validate([
-            'nombre' => 'required|string|max:30',
-            'rut' => 'required|string|max:10|unique:administradores,rut',
-            'email' => 'required|email|max:40|unique:administradores,email',
+            'nombre' => 'required|string|max:255',
+            'rut' => 'required|string|max:255|unique:administradores,rut',
+            'email' => 'required|email|max:255|unique:administradores,email',
         ]);
+
+        // Log después de la validación
 
         // Crear un nuevo administrador
         Administrador::create($validated);
+
+        // Log después de intentar crear el administrador
 
         // Redirigir o mostrar un mensaje de éxito
         return redirect()->route('administradores.create')->with('success', 'Administrador creado exitosamente');
