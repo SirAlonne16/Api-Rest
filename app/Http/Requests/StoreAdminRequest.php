@@ -26,9 +26,8 @@ class StoreAdminRequest extends FormRequest
         return [
             //
             'name'=>['required'],
-            'rut'=>['required'],
-            'email'=>['required'],
-
+            'talla'=>['required'],
+            'marca'=>['required'],
         ];
     }
 }
