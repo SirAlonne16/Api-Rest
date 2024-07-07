@@ -40,8 +40,8 @@ class AdminController extends Controller
     public function index()
     {
         //
-        $clientes=Administrador::all();
-        return new AdministradorCollection($clientes);
+        $administrador=Administrador::all();
+        return new AdministradorCollection($administrador);
     }
 
     /**
