@@ -24,26 +24,5 @@
 
         <input type="submit" value="Guardar">
     </form>
-    <h2>Clientes</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>RUT</th>
-                <th>Talla</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($clientes as $cliente)
-                <tr>
-                    <td>{{ $cliente->nombre }}</td>
-                    <td>{{ $cliente->rut }}</td>
-                    <td>{{ $cliente->Talla }}</td>
-                    <td>{{ $cliente->Email }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
 </body>
 </html>
