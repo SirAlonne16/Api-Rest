@@ -18,7 +18,7 @@ class ClienteController extends Controller
 
     public function guardarCliente(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'nombre' => 'required',
             'rut' => 'required',
             'email' => 'required|email',
@@ -32,7 +32,6 @@ class ClienteController extends Controller
         $cliente->talla = $request->talla;
         $cliente->save();
         
-        Cliente::create($validated);
 
         return redirect()->route('formulario_crear_cliente')->with('success', 'Cliente creado exitosamente.');
     }
