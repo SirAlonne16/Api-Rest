@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AdministradorController;
+use App\Http\Controllers\ProfesorController;
 
 
 /*
@@ -23,8 +24,8 @@ Route::post('/guardar-cliente', [ClienteController::class, 'guardarCliente'])->n
 Route::get('administradores/create', [AdministradorController::class, 'create'])->name('administradores.create');
 Route::post('administradores', [AdministradorController::class, 'store'])->name('administradores.store');
 
-Route::get('profesores/create_profe', [AdministradorController::class, 'create'])->name('profesores.create');
-Route::post('profesores', [AdministradorController::class, 'store'])->name('profesores.store');
+Route::get('profesores/create_profe', [ProfesorController::class, 'create'])->name('profesores.create');
+Route::post('profesores', [ProfesorController::class, 'store'])->name('profesores.store');
 
 Route::get('', function () {
     return view('Principal');

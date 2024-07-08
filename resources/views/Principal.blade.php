@@ -11,7 +11,7 @@
                 <a href="{{ route('administradores.create') }}" class="btn btn-primary btn-block">Ir a Administradores</a>
             </div>
             <div class="col-md-4">
-                <a href="{{ route('profesores.create') }}" class="btn btn-secondary btn-block">Ir a Profesores/a>
+                <a href="{{ route('profesores.create') }}" class="btn btn-secondary btn-block">Ir a Profesores</a>
             </div>
             <div class="col-md-4">
                 <a href="{{ route('formulario_crear_cliente') }}" class="btn btn-success btn-block">Ir a Clientes</a>
