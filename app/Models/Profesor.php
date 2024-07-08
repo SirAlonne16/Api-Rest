@@ -6,6 +6,6 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 class Profesor extends Eloquent
 {
-    protected $collection = 'Profesores'; // Nombre de la colección en MongoDB
-    protected $fillable = ['nombre', 'rut', 'email']; // Campos que se pueden llenar masivamente
+    protected $collection = 'Profesores'; // Nombre de la colección en MongoDB, asegúrate de que coincida
+    protected $fillable = ['nombre', 'rut', 'email'];
 }
