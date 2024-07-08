@@ -2,18 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-//use Illuminate\Database\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Profesores extends Model
-{    
-    protected $connection ='mongodb';
-    protected $collection ='Profesores';
-    use HasFactory;
-    protected $fillable=[
-        'name',
-        'rut',
-        'email'
-    ];
+class Profesor extends Eloquent
+{
+    protected $collection = 'Profesores'; // Nombre de la colección en MongoDB
+    protected $fillable = ['nombre', 'rut', 'email']; // Campos que se pueden llenar masivamente
 }
