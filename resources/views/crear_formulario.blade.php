@@ -61,8 +61,8 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            float: right;
-            /* Alinear a la derecha */
+           
+         
         }
 
         input[type=submit]:hover {
