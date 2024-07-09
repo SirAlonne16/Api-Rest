@@ -85,6 +85,7 @@
 
         input[type=date] {
             width: calc(100% - 20px);
+            /* Ajusta el ancho del input */
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
@@ -143,17 +144,14 @@
                 }
             }
 
+            // Mostrar u ocultar el campo de problema médico
             $('#problemas_medicos').change(function () {
-                // Cuando cambia el valor del select con id problemas_medicos
                 if ($(this).val() === 'Sí') {
-
-                    $('#problema_medico').show(); // Mostrar el campo de entrada para problemas médicos
+                    $('#problema_medico').show();
                 } else {
-
-                    $('#problema_medico').hide(); // Ocultar el campo de entrada para problemas médicos
+                    $('#problema_medico').hide();
                 }
-            }).trigger('change'); // Disparar el evento change para ejecutar la función al cargar la página
-
+            }).trigger('change');
         });
 
         function enviarFormulario(event) {
