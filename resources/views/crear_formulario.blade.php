@@ -82,6 +82,16 @@
             /* Espacio entre el texto y el campo oculto */
             font-weight: bold;
         }
+
+        input[type=date] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
     </style>
     <!-- Incluir un script para cargar regiones y comunas -->
     <script>
