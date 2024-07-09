@@ -3,18 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Formulario;
+use App\Models\Cliente;
 
-class FormularioController extends Controller
+class ClienteController extends Controller
 {
-    public function formularioCrear()
+    public function guardar_cliente(Request $request)
     {
-        return view('crear_formulario');
-    }
-
-    public function guardarFormulario(Request $request)
-    {
-        $request->validate([
+        // Validar los datos
+        $validatedData = $request->validate([
             'nombre' => 'required|string|max:255',
             'fecha_nacimiento' => 'required|date',
             'rut' => 'required|string|max:255',
@@ -32,28 +28,26 @@ class FormularioController extends Controller
             'usuario' => 'required|string|max:6'
         ]);
 
-        $formulario = new Formulario;
-        $formulario->nombre = $request->nombre;
-        $formulario->fecha_nacimiento = $request->fecha_nacimiento;
-        $formulario->rut = $request->rut;
-        $formulario->email = $request->email;
-        $formulario->telefono = $request->telefono;
-        $formulario->edad = $request->edad;
-        $formulario->direccion = $request->direccion;
-        $formulario->region = $request->region;
-        $formulario->comuna = $request->comuna;
-        $formulario->problemas_medicos = $request->problemas_medicos;
-        $formulario->problema_medico = $request->problema_medico;
-        $formulario->necesita_equipo = $request->necesita_equipo;
-        $formulario->tiene_experiencia = $request->tiene_experiencia;
-        $formulario->genero = $request->genero;
-        $formulario->usuario = $request->usuario;
-        $formulario->save();
-        
+        // Crear un nuevo cliente
+        $cliente = new Cliente();
+        $cliente->nombre = $validatedData['nombre'];
+        $cliente->fecha_nacimiento = $validatedData['fecha_nacimiento'];
+        $cliente->rut = $validatedData['rut'];
+        $cliente->email = $validatedData['email'];
+        $cliente->telefono = $validatedData['telefono'];
+        $cliente->edad = $validatedData['edad'];
+        $cliente->direccion = $validatedData['direccion'];
+        $cliente->region = $validatedData['region'];
+        $cliente->comuna = $validatedData['comuna'];
+        $cliente->problemas_medicos = $validatedData['problemas_medicos'];
+        $cliente->problema_medico = $validatedData['problema_medico'];
+        $cliente->necesita_equipo = $validatedData['necesita_equipo'];
+        $cliente->tiene_experiencia = $validatedData['tiene_experiencia'];
+        $cliente->genero = $validatedData['genero'];
+        $cliente->usuario = $validatedData['usuario'];
+        $cliente->save();
 
-        return redirect()->route('formulario_crear')->with('success', 'Cliente creado exitosamente.');
+        // Redirigir con un mensaje de éxito
+        return redirect()->back()->with('success', 'Cliente guardado exitosamente');
     }
 }
-
-
-
