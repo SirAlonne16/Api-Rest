@@ -230,9 +230,11 @@
         <span id="usuario"></span>
         <input type="hidden" id="usuario_oculto" name="usuario">
 
-        
+        <div>
+            <input type="submit" value="Guardar">
+        </div>
     </form>
-    <input type="submit" value="Guardar">
+
 </body>
 
 </html>
