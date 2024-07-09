@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Página Principal</title>
     <style>
@@ -21,23 +22,22 @@
             border-radius: 8px;
             width: 60%;
             text-align: center;
-            margin-bottom: 20px; /* Separación del borde inferior */
         }
 
-        .row {
+        .btn-container {
             display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
-
-        .col-md-4 {
-            flex: 1;
-            margin: 0 10px;
+            flex-direction: column;
+            /* Alinea verticalmente */
+            align-items: center;
+            /* Centra horizontalmente */
+            gap: 20px;
+            /* Espacio entre los botones */
         }
 
         .btn {
             display: block;
             width: 100%;
+            max-width: 300px;
             padding: 10px;
             font-size: 16px;
             color: white;
@@ -73,23 +73,18 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1 class="mt-5">Página Principal</h1>
-        <div class="row mt-3">
-            <div class="col-md-4">
-                <a href="{{ route('administradores.create') }}" class="btn btn-primary">Ir a Administradores</a>
-            </div>
-            <div class="col-md-4">
-                <a href="{{ route('profesores.create') }}" class="btn btn-secondary">Ir a Profesores</a>
-            </div>
-            <div class="col-md-4">
-                <a href="{{ route('formulario_crear_cliente') }}" class="btn btn-success">Ir a Estudiantes</a>
-            </div>
-            <div class="col-md-4">
-                <a href="{{ route('formulario_crear') }}" class="btn btn-success btn-block">Ir a Formulario-Prueba</a>
-            </div>
+        <div class="btn-container mt-3">
+            <a href="{{ route('administradores.create') }}" class="btn btn-primary">Ir a Administradores</a>
+            <a href="{{ route('profesores.create') }}" class="btn btn-secondary">Ir a Profesores</a>
+            <a href="{{ route('formulario_crear_cliente') }}" class="btn btn-success">Ir a Estudiantes</a>
+            <a href="{{ route('formulario_crear') }}" class="btn btn-success btn-block">Ir a Formulario-Prueba</a>
+
         </div>
     </div>
 </body>
+
 </html>
