@@ -29,20 +29,23 @@
 
         label {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         input[type=text],
         input[type=email],
         input[type=number],
         select {
-            width: 100%;
+            width: calc(100% - 20px);
+            /* Reduce el ancho para acomodar el usuario */
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
             font-size: 16px;
+            display: inline-block;
+            /* Permite que los elementos estén en línea */
         }
 
         select {
@@ -50,26 +53,36 @@
         }
 
         input[type=submit] {
-            background-color: #4CAF50;
+            background-color: #007bff;
+            /* Color primary */
             color: white;
             padding: 12px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+            float: right;
+            /* Alinear a la derecha */
         }
 
         input[type=submit]:hover {
-            background-color: ##00527B;
+            background-color: #0056b3;
+            /* Color hover */
         }
 
         .hidden {
             display: none;
         }
+
+        #usuario {
+            display: inline-block;
+            margin-left: 10px;
+            font-weight: bold;
+        }
     </style>
     <!-- Incluir un script para cargar regiones y comunas -->
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Aquí puedes cargar dinámicamente las regiones y comunas de Chile
             const regionesComunas = {
                 "Region1": ["Comuna1", "Comuna2"],
@@ -86,7 +99,7 @@
             }
 
             // Cambiar las comunas según la región seleccionada
-            regionesSelect.change(function() {
+            regionesSelect.change(function () {
                 const selectedRegion = $(this).val();
                 comunasSelect.empty();
                 regionesComunas[selectedRegion].forEach(comuna => {
@@ -95,7 +108,7 @@
             });
 
             // Generar usuario
-            $('#nombre').on('input', function() {
+            $('#nombre').on('input', function () {
                 generarUsuario();
             });
 
@@ -118,7 +131,7 @@
             }
 
             // Mostrar u ocultar el campo de problema médico
-            $('#problemas_medicos').change(function() {
+            $('#problemas_medicos').change(function () {
                 if ($(this).val() === 'Sí') {
                     $('#problema_medico').show();
                 } else {
@@ -133,14 +146,14 @@
             const necesitaEquipo = $('#necesita_equipo').val();
             const actionUrl = $('#clienteForm').attr('action');
 
-            $.post(actionUrl, $('#clienteForm').serialize(), function(response) {
+            $.post(actionUrl, $('#clienteForm').serialize(), function (response) {
                 if (necesitaEquipo === 'Sí') {
                     window.location.href = 'http://skiclubweb-729587da3a63.herokuapp.com/comprar-arriendo';
                 } else {
                     alert('Formulario enviado correctamente.');
                     // Aquí puedes agregar cualquier otra lógica para manejar el envío exitoso
                 }
-            }).fail(function() {
+            }).fail(function () {
                 alert('Error al enviar el formulario.');
             });
         }
