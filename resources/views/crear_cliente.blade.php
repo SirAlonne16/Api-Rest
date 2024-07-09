@@ -21,8 +21,10 @@
                     var primerasLetrasApellido = apellido.substring(0, 3);
                     var usuario = primerasLetrasNombre + primerasLetrasApellido;
                     $('#usuario').text(usuario);
+                    $('#usuario_oculto').val(usuario);
                 } else {
                     $('#usuario').text('');
+                    $('#usuario_oculto').val('');
                 }
             }
         });
@@ -43,6 +45,7 @@
 
         <label for="usuario">Usuario:</label><br>
         <span id="usuario"></span><br>
+        <input type="hidden" id="usuario_oculto" name="usuario"><br>
 
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email"><br>
