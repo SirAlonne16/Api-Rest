@@ -70,7 +70,7 @@
     @if(session('success'))
         <div>{{ session('success') }}</div>
     @endif
-    <form method="post" action="{{ route('guardar_cliente') }}">
+    <form method="post" action="{{ route('guardar_formulario') }}">
         @csrf
         <label for="nombre">Nombre completo:</label><br>
         <input type="text" id="nombre" name="nombre"><br>
@@ -126,9 +126,9 @@
 
         <label for="genero">Género:</label><br>
         <select id="genero" name="genero">
+            <option value="Otro">Otro</option>
             <option value="Masculino">Masculino</option>
             <option value="Femenino">Femenino</option>
-            <option value="Otro">Otro</option>
         </select><br>
 
         <label for="usuario">Usuario:</label><br>
