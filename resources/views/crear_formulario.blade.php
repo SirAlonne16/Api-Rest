@@ -62,12 +62,21 @@
                     $('#problema_medico').hide();
                 }
             }).trigger('change');
-        });
-        document.getElementById('clienteForm').addEventListener('submit', function(event) {
-            const necesitaEquipo = document.getElementById('necesita_equipo').value;
-            if (necesitaEquipo === 'Sí') {
-                window.location.href = 'http://skiclubweb-729587da3a63.herokuapp.com/comprar-arriendo';
-            }
+
+            $('#clienteForm').on('submit', function(event) {
+                event.preventDefault(); // Previene el envío del formulario
+
+                const necesitaEquipo = $('#necesita_equipo').val();
+                const actionUrl = $(this).attr('action');
+
+                $.post(actionUrl, $(this).serialize(), function(response) {
+                    if (necesitaEquipo === 'Sí') {
+                        window.location.href = 'http://skiclubweb-729587da3a63.herokuapp.com/comprar-arriendo';
+                    } else {
+                        alert('Formulario enviado correctamente.');
+                    }
+                });
+            });
         });
     </script>
 </head>
