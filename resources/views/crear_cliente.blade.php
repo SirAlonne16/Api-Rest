@@ -106,7 +106,7 @@
 
             <input type="submit" value="Guardar">
         </form>
-       
+        <a href="{{ route('Principal') }}" class="btn btn-success btn-block">ola ysy a ft jere kleyn,no se como se escribe</a>
     </div>
 
 
