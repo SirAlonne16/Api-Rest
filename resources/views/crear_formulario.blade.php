@@ -143,14 +143,17 @@
                 }
             }
 
-            // Mostrar u ocultar el campo de problema médico
             $('#problemas_medicos').change(function () {
+                // Cuando cambia el valor del select con id problemas_medicos
                 if ($(this).val() === 'Sí') {
-                    $('#problema_medico').show();
+                   
+                    $('#problema_medico').show(); // Mostrar el campo de entrada para problemas médicos
                 } else {
-                    $('#problema_medico').hide();
+                    
+                    $('#problema_medico').hide(); // Ocultar el campo de entrada para problemas médicos
                 }
-            }).trigger('change');
+            }).trigger('change'); // Disparar el evento change para ejecutar la función al cargar la página
+
         });
 
         function enviarFormulario(event) {
