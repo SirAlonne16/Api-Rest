@@ -81,31 +81,6 @@
             border-radius: 4px;
         }
     </style>
-    <script>
-        $(document).ready(function () {
-            $('#nombre').on('input', function () {
-                generarUsuario();
-            });
-
-            function generarUsuario() {
-                var nombreCompleto = $('#nombre').val().trim();
-                var partes = nombreCompleto.split(' ');
-
-                if (partes.length >= 2) {
-                    var nombre = partes[0];
-                    var apellido = partes[1];
-                    var primerasLetrasNombre = nombre.substring(0, 3);
-                    var primerasLetrasApellido = apellido.substring(0, 3);
-                    var usuario = primerasLetrasNombre + primerasLetrasApellido;
-                    $('#usuario').text(usuario);
-                    $('#usuario_oculto').val(usuario);
-                } else {
-                    $('#usuario').text('');
-                    $('#usuario_oculto').val('');
-                }
-            }
-        });
-    </script>
 </head>
 
 <body>
@@ -132,6 +107,32 @@
             <input type="submit" value="Guardar">
         </form>
     </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#nombre').on('input', function () {
+                generarUsuario();
+            });
+
+            function generarUsuario() {
+                var nombreCompleto = $('#nombre').val().trim();
+                var partes = nombreCompleto.split(' ');
+
+                if (partes.length >= 2) {
+                    var nombre = partes[0];
+                    var apellido = partes[1];
+                    var primerasLetrasNombre = nombre.substring(0, 3);
+                    var primerasLetrasApellido = apellido.substring(0, 3);
+                    var usuario = primerasLetrasNombre + primerasLetrasApellido;
+                    $('#usuario').text(usuario);
+                    $('#usuario_oculto').val(usuario);
+                } else {
+                    $('#usuario').text('');
+                    $('#usuario_oculto').val('');
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
