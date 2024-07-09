@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Página Principal</title>
     <style>
@@ -11,7 +10,7 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end; /* Alinea hacia abajo */
             height: 100vh;
         }
 
@@ -22,6 +21,7 @@
             border-radius: 8px;
             width: 60%;
             text-align: center;
+            margin-bottom: 20px; /* Separación del borde inferior */
         }
 
         .row {
@@ -73,7 +73,6 @@
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <h1 class="mt-5">Página Principal</h1>
@@ -90,5 +89,4 @@
         </div>
     </div>
 </body>
-
 </html>
