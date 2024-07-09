@@ -61,8 +61,9 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-           
-         
+            margin-top: 25px;
+
+
         }
 
         input[type=submit]:hover {
@@ -76,7 +77,10 @@
 
         #usuario {
             display: inline-block;
+            vertical-align: top;
+            /* Alinear verticalmente al mismo nivel */
             margin-left: 10px;
+            /* Espacio entre el texto y el campo oculto */
             font-weight: bold;
         }
     </style>
@@ -227,8 +231,9 @@
         </select>
 
         <label for="usuario">Usuario:</label>
-        <span id="usuario"></span>
+        <span id="usuario" style="display: inline-block;"></span>
         <input type="hidden" id="usuario_oculto" name="usuario">
+
 
         <div>
             <input type="submit" value="Guardar">
