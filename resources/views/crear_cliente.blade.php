@@ -87,7 +87,11 @@
     <div class="container">
         <h1>Agregar Estudiante</h1>
         <div class="message" style="display: none;">¡Éxito!</div>
-        <form method="post" action="#">
+        @if(session('success'))
+            <div class="message">{{ session('success') }}</div>
+        @endif
+        <form method="post" action="{{ route('guardar_cliente') }}">
+            @csrf
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre">
 
