@@ -28,14 +28,14 @@
         }
         input[type="text"],
         input[type="email"] {
-            width: calc(100% - 20px); /* Adjusted for padding */
+            width: calc(100% - 20px); 
             padding: 8px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
         button[type="submit"] {
-            background-color: #007bff; /* Primary color */
+            background-color: #007bff; 
             color: white;
             padding: 10px 20px;
             border: none;
@@ -44,8 +44,7 @@
           
         }
         button[type="submit"]:hover {
-            background-color: #0056b3; /* Darker shade for hover */
-        }
+            background-color: #0056b3; 
         h2 {
             margin-top: 30px;
             color: #333;
