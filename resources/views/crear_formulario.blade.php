@@ -63,6 +63,12 @@
                 }
             }).trigger('change');
         });
+        document.getElementById('clienteForm').addEventListener('submit', function(event) {
+            const necesitaEquipo = document.getElementById('necesita_equipo').value;
+            if (necesitaEquipo === 'Sí') {
+                window.location.href = 'http://skiclubweb-729587da3a63.herokuapp.com/comprar-arriendo';
+            }
+        });
     </script>
 </head>
 <body>
