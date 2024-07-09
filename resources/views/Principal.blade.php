@@ -79,8 +79,8 @@
         <h1 class="mt-5">Página Principal</h1>
         <div class="btn-container mt-3">
             <a href="{{ route('administradores.create') }}" class="btn btn-primary">Ir a Administradores</a>
-            <a href="{{ route('profesores.create') }}" class="btn btn-secondary">Ir a Profesores</a>
-            <a href="{{ route('formulario_crear_cliente') }}" class="btn btn-success">Ir a Estudiantes</a>
+            <a href="{{ route('profesores.create') }}" class="btn btn-primary">Ir a Profesores</a>
+            <a href="{{ route('formulario_crear_cliente') }}" class="btn btn-primary">Ir a Estudiantes</a>
             <a href="{{ route('formulario_crear') }}" class="btn btn-success btn-block">Ir a Formulario-Prueba</a>
 
         </div>
