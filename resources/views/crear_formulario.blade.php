@@ -28,7 +28,6 @@
         }
 
         label {
-            display: block;
             margin-bottom: 8px;
         }
 
@@ -177,7 +176,7 @@
         <label for="fecha_nacimiento">Fecha de nacimiento:</label>
         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
 
-        <label for="rut">Rut:</label>
+        <label for="rut" style="display: block;">Rut:</label>
         <input type="text" id="rut" name="rut">
 
         <label for="email">Email:</label>
