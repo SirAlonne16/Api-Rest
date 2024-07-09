@@ -96,11 +96,25 @@
     <!-- Incluir un script para cargar regiones y comunas -->
     <script>
         $(document).ready(function () {
-            // Aquí puedes cargar dinámicamente las regiones y comunas de Chile
+            // Datos ficticios de regiones y comunas de Chile
             const regionesComunas = {
-                "Region1": ["Comuna1", "Comuna2"],
-                "Region2": ["Comuna3", "Comuna4"]
-                // Agrega todas las regiones y comunas aquí
+                "Región de Arica y Parinacota": ["Arica", "Putre"],
+                "Región de Tarapacá": ["Iquique", "Pozo Almonte"],
+                "Región de Antofagasta": ["Antofagasta", "Calama"],
+                "Región de Atacama": ["Copiapó", "Chañaral"],
+                "Región de Coquimbo": ["La Serena", "Coquimbo"],
+                "Región de Valparaíso": ["Valparaíso", "Viña del Mar"],
+                "Región Metropolitana de Santiago": ["Santiago", "Puente Alto"],
+                "Región de O'Higgins": ["Rancagua", "San Fernando"],
+                "Región del Maule": ["Talca", "Curicó"],
+                "Región de Ñuble": ["Chillán", "Bulnes"],
+                "Región del Biobío": ["Concepción", "Chillán Viejo"],
+                "Región de La Araucanía": ["Temuco", "Victoria"],
+                "Región de Los Ríos": ["Valdivia", "La Unión"],
+                "Región de Los Lagos": ["Puerto Montt", "Osorno"],
+                "Región de Aysén del General Carlos Ibáñez del Campo": ["Coyhaique", "Puerto Aysén"],
+                "Región de Magallanes y de la Antártica Chilena": ["Punta Arenas", "Puerto Natales"]
+                // Puedes agregar más regiones y comunas aquí
             };
 
             const regionesSelect = $('#region');
@@ -119,40 +133,42 @@
                     comunasSelect.append(new Option(comuna, comuna));
                 });
             });
+        });
 
-            // Generar usuario
-            $('#nombre').on('input', function () {
-                generarUsuario();
-            });
 
-            function generarUsuario() {
-                var nombreCompleto = $('#nombre').val().trim();
-                var partes = nombreCompleto.split(' ');
+        // Generar usuario
+        $('#nombre').on('input', function () {
+            generarUsuario();
+        });
 
-                if (partes.length >= 2) {
-                    var nombre = partes[0];
-                    var apellido = partes[1];
-                    var primerasLetrasNombre = nombre.substring(0, 3);
-                    var primerasLetrasApellido = apellido.substring(0, 3);
-                    var usuario = primerasLetrasNombre + primerasLetrasApellido;
-                    $('#usuario').text(usuario);
-                    $('#usuario_oculto').val(usuario);
-                } else {
-                    $('#usuario').text('');
-                    $('#usuario_oculto').val('');
-                }
+        function generarUsuario() {
+            var nombreCompleto = $('#nombre').val().trim();
+            var partes = nombreCompleto.split(' ');
+
+            if (partes.length >= 2) {
+                var nombre = partes[0];
+                var apellido = partes[1];
+                var primerasLetrasNombre = nombre.substring(0, 3);
+                var primerasLetrasApellido = apellido.substring(0, 3);
+                var usuario = primerasLetrasNombre + primerasLetrasApellido;
+                $('#usuario').text(usuario);
+                $('#usuario_oculto').val(usuario);
+            } else {
+                $('#usuario').text('');
+                $('#usuario_oculto').val('');
             }
+        }
 
-            $('#problemas_medicos').change(function () {
-                // Cuando cambia el valor del select con id problemas_medicos
-                if ($(this).val() === 'Sí') {
-                   
-                    $('#problema_medico').show(); // Mostrar el campo de entrada para problemas médicos
-                } else {
-                    
-                    $('#problema_medico').hide(); // Ocultar el campo de entrada para problemas médicos
-                }
-            }).trigger('change'); // Disparar el evento change para ejecutar la función al cargar la página
+        $('#problemas_medicos').change(function () {
+            // Cuando cambia el valor del select con id problemas_medicos
+            if ($(this).val() === 'Sí') {
+
+                $('#problema_medico').show(); // Mostrar el campo de entrada para problemas médicos
+            } else {
+
+                $('#problema_medico').hide(); // Ocultar el campo de entrada para problemas médicos
+            }
+        }).trigger('change'); // Disparar el evento change para ejecutar la función al cargar la página
 
         });
 
