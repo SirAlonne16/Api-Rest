@@ -106,7 +106,11 @@
 
             <input type="submit" value="Guardar">
         </form>
+        <div class="btn-container mt-3">
+            <a href="{{ route('Principal.create') }}" class="btn btn-primary">Volver</a>
+        </div>
     </div>
+
 
     <script>
         $(document).ready(function () {
