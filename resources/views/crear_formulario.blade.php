@@ -59,7 +59,7 @@
         }
 
         input[type=submit]:hover {
-            background-color: #45a049;
+            background-color: ##00527B;
         }
 
         .hidden {
