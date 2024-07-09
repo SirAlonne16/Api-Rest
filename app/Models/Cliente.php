@@ -15,7 +15,8 @@ class Cliente extends Model
         'name',
         'rut',
         'email',
-        'talla'
+        'talla',
+        'usuario'
     ];
 
 

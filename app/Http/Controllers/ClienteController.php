@@ -19,10 +19,11 @@ class ClienteController extends Controller
     public function guardarCliente(Request $request)
     {
         $request->validate([
-            'nombre' => 'required',
-            'rut' => 'required',
-            'email' => 'required|email',
-            'talla' => 'required',
+            'nombre' => 'required|string|max:255',
+            'rut' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'talla' => 'nullable|string|max:255',
+            'usuario' => 'required|string|max:6'
         ]);
 
         $cliente = new Cliente;
@@ -30,6 +31,7 @@ class ClienteController extends Controller
         $cliente->rut = $request->rut;
         $cliente->email = $request->email;
         $cliente->talla = $request->talla;
+        $cliente->usuario = $request->usuario;
         $cliente->save();
         
 
