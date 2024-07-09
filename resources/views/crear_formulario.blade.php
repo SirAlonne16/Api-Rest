@@ -69,7 +69,81 @@
     </style>
     <!-- Incluir un script para cargar regiones y comunas -->
     <script>
-        // Tu script jQuery aquí...
+        $(document).ready(function() {
+            // Aquí puedes cargar dinámicamente las regiones y comunas de Chile
+            const regionesComunas = {
+                "Region1": ["Comuna1", "Comuna2"],
+                "Region2": ["Comuna3", "Comuna4"]
+                // Agrega todas las regiones y comunas aquí
+            };
+
+            const regionesSelect = $('#region');
+            const comunasSelect = $('#comuna');
+
+            // Cargar las regiones
+            for (const region in regionesComunas) {
+                regionesSelect.append(new Option(region, region));
+            }
+
+            // Cambiar las comunas según la región seleccionada
+            regionesSelect.change(function() {
+                const selectedRegion = $(this).val();
+                comunasSelect.empty();
+                regionesComunas[selectedRegion].forEach(comuna => {
+                    comunasSelect.append(new Option(comuna, comuna));
+                });
+            });
+
+            // Generar usuario
+            $('#nombre').on('input', function() {
+                generarUsuario();
+            });
+
+            function generarUsuario() {
+                var nombreCompleto = $('#nombre').val().trim();
+                var partes = nombreCompleto.split(' ');
+
+                if (partes.length >= 2) {
+                    var nombre = partes[0];
+                    var apellido = partes[1];
+                    var primerasLetrasNombre = nombre.substring(0, 3);
+                    var primerasLetrasApellido = apellido.substring(0, 3);
+                    var usuario = primerasLetrasNombre + primerasLetrasApellido;
+                    $('#usuario').text(usuario);
+                    $('#usuario_oculto').val(usuario);
+                } else {
+                    $('#usuario').text('');
+                    $('#usuario_oculto').val('');
+                }
+            }
+
+            // Mostrar u ocultar el campo de problema médico
+            $('#problemas_medicos').change(function() {
+                if ($(this).val() === 'Sí') {
+                    $('#problema_medico').show();
+                } else {
+                    $('#problema_medico').hide();
+                }
+            }).trigger('change');
+        });
+
+        function enviarFormulario(event) {
+            event.preventDefault(); // Previene el envío del formulario
+
+            const necesitaEquipo = $('#necesita_equipo').val();
+            const actionUrl = $('#clienteForm').attr('action');
+
+            $.post(actionUrl, $('#clienteForm').serialize(), function(response) {
+                if (necesitaEquipo === 'Sí') {
+                    window.location.href = 'http://skiclubweb-729587da3a63.herokuapp.com/comprar-arriendo';
+                } else {
+                    alert('Formulario enviado correctamente.');
+                    // Aquí puedes agregar cualquier otra lógica para manejar el envío exitoso
+                }
+            }).fail(function() {
+                alert('Error al enviar el formulario.');
+            });
+        }
     </script>
 </head>
 
@@ -78,7 +152,7 @@
     @if(session('success'))
         <div>{{ session('success') }}</div>
     @endif
-    <form id="clienteForm" method="post" action="{{ route('guardar_formulario') }}">
+    <form id="clienteForm" method="post" action="{{ route('guardar_formulario') }}" onsubmit="enviarFormulario(event)">
         @csrf
         <label for="nombre">Nombre completo:</label>
         <input type="text" id="nombre" name="nombre">
