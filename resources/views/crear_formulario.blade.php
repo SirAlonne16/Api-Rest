@@ -62,22 +62,25 @@
                     $('#problema_medico').hide();
                 }
             }).trigger('change');
-
-            $('#clienteForm').on('submit', function(event) {
-                event.preventDefault(); // Previene el envío del formulario
-
-                const necesitaEquipo = $('#necesita_equipo').val();
-                const actionUrl = $(this).attr('action');
-
-                $.post(actionUrl, $(this).serialize(), function(response) {
-                    if (necesitaEquipo === 'Sí') {
-                        window.location.href = 'http://skiclubweb-729587da3a63.herokuapp.com/comprar-arriendo';
-                    } else {
-                        alert('Formulario enviado correctamente.');
-                    }
-                });
-            });
         });
+
+        function enviarFormulario(event) {
+            event.preventDefault(); // Previene el envío del formulario
+
+            const necesitaEquipo = $('#necesita_equipo').val();
+            const actionUrl = $('#clienteForm').attr('action');
+
+            $.post(actionUrl, $('#clienteForm').serialize(), function(response) {
+                if (necesitaEquipo === 'Sí') {
+                    window.location.href = 'http://skiclubweb-729587da3a63.herokuapp.com/comprar-arriendo';
+                } else {
+                    alert('Formulario enviado correctamente.');
+                    // Aquí puedes agregar cualquier otra lógica para manejar el envío exitoso
+                }
+            }).fail(function() {
+                alert('Error al enviar el formulario.');
+            });
+        }
     </script>
 </head>
 <body>
@@ -85,7 +88,7 @@
     @if(session('success'))
         <div>{{ session('success') }}</div>
     @endif
-    <form method="post" action="{{ route('guardar_formulario') }}">
+    <form id="clienteForm" method="post" action="{{ route('guardar_formulario') }}" onsubmit="enviarFormulario(event)">
         @csrf
         <label for="nombre">Nombre completo:</label><br>
         <input type="text" id="nombre" name="nombre"><br>
