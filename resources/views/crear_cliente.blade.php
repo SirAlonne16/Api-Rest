@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Crear Cliente</title>
+    <title>Agregar Estudiante</title>
     <!-- Incluir jQuery desde una CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -31,7 +31,7 @@
     </script>
 </head>
 <body>
-    <h1>Crear Cliente</h1>
+    <h1>Agregar Estudiante</h1>
     @if(session('success'))
         <div>{{ session('success') }}</div>
     @endif
