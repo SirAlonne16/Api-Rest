@@ -10,7 +10,7 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            align-items: flex-end; /* Alinea hacia abajo */
+            align-items: center;
             height: 100vh;
         }
 
