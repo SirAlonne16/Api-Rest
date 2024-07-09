@@ -47,18 +47,24 @@
             border-radius: 4px;
         }
 
-        input[type="submit"] {
+        input[type="submit"],
+        a.button {
+            display: block;
             width: 100%;
             padding: 10px;
+            margin-top: 10px;
             background-color: #007bff;
             color: white;
+            text-align: center;
+            text-decoration: none;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
         }
 
-        input[type="submit"]:hover {
+        input[type="submit"]:hover,
+        a.button:hover {
             background-color: #0056b3;
         }
 
@@ -106,9 +112,8 @@
 
             <input type="submit" value="Guardar">
         </form>
-       
+        <a href="{{ route('principal') }}" class="btn btn-primary">home</a>
     </div>
-
 
     <script>
         $(document).ready(function () {
