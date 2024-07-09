@@ -114,7 +114,7 @@
                 "Región de Los Lagos": ["Puerto Montt", "Osorno"],
                 "Región de Aysén del General Carlos Ibáñez del Campo": ["Coyhaique", "Puerto Aysén"],
                 "Región de Magallanes y de la Antártica Chilena": ["Punta Arenas", "Puerto Natales"]
-                // Puedes agregar más regiones y comunas aquí
+            
             };
 
             const regionesSelect = $('#region');
@@ -170,7 +170,7 @@
             }
         }).trigger('change'); // Disparar el evento change para ejecutar la función al cargar la página
 
-        });
+        
 
         function enviarFormulario(event) {
             event.preventDefault(); // Previene el envío del formulario
