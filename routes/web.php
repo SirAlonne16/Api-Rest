@@ -16,8 +16,8 @@ use App\Http\Controllers\FormularioController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/crear-formulario', [FormularioController::class, 'formularioCrear'])->name('formulario_crear_cliente');
-Route::post('/guardar-formulario', [FormularioController::class, 'guardarCliente'])->name('guardar_cliente');
+Route::get('/crear-formulario', [FormularioController::class, 'formularioCrear'])->name('formulario_crear');
+Route::post('/guardar-formulario', [FormularioController::class, 'guardarFormulario'])->name('guardar_formulario');
 
 Route::get('/crear-cliente', [ClienteController::class, 'formularioCrear'])->name('formulario_crear_cliente');
 Route::post('/guardar-cliente', [ClienteController::class, 'guardarCliente'])->name('guardar_cliente');
