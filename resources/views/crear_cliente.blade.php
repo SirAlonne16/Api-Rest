@@ -106,7 +106,9 @@
 
             <input type="submit" value="Guardar">
         </form>
+       
     </div>
+
 
     <script>
         $(document).ready(function () {
