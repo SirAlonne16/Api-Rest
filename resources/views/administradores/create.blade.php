@@ -44,7 +44,8 @@
           
         }
         button[type="submit"]:hover {
-            background-color: #0056b3; 
+            background-color: #0056b3; /* Darker shade for hover */
+        }
         h2 {
             margin-top: 30px;
             color: #333;
