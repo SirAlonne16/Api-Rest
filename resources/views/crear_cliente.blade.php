@@ -7,10 +7,10 @@
     <script>
         $(document).ready(function() {
             $('#nombre').on('input', function() {
-                generarCorreo();
+                generarUsuario();
             });
 
-            function generarCorreo() {
+            function generarUsuario() {
                 var nombreCompleto = $('#nombre').val().trim();
                 var partes = nombreCompleto.split(' ');
 
@@ -19,10 +19,10 @@
                     var apellido = partes[1];
                     var primerasLetrasNombre = nombre.substring(0, 3);
                     var primerasLetrasApellido = apellido.substring(0, 3);
-                    var correo = primerasLetrasNombre + primerasLetrasApellido + '@gmail.com';
-                    $('#email').val(correo);
+                    var usuario = primerasLetrasNombre + primerasLetrasApellido;
+                    $('#usuario').text(usuario);
                 } else {
-                    $('#email').val('');
+                    $('#usuario').text('');
                 }
             }
         });
@@ -41,8 +41,11 @@
         <label for="rut">Rut:</label><br>
         <input type="text" id="rut" name="rut"><br>
 
+        <label for="usuario">Usuario:</label><br>
+        <span id="usuario"></span><br>
+
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" readonly><br>
+        <input type="email" id="email" name="email"><br>
 
         <label for="talla">Talla:</label><br>
         <input type="text" id="talla" name="talla"><br>
@@ -50,5 +53,4 @@
         <input type="submit" value="Guardar">
     </form>
 </body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </html>
