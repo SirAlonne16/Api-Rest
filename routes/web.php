@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\ProfesorController;
-
+use App\Http\Controllers\FormularioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,8 @@ use App\Http\Controllers\ProfesorController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/crear-formulario', [FormularioController::class, 'formularioCrear'])->name('formulario_crear');
+Route::post('/guardar-formulario', [FormularioController::class, 'guardarFormulario'])->name('guardar_formulario');
 
 Route::get('/crear-cliente', [ClienteController::class, 'formularioCrear'])->name('formulario_crear_cliente');
 Route::post('/guardar-cliente', [ClienteController::class, 'guardarCliente'])->name('guardar_cliente');

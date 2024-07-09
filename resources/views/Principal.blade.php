@@ -86,6 +86,9 @@
             <div class="col-md-4">
                 <a href="{{ route('formulario_crear_cliente') }}" class="btn btn-success">Ir a Estudiantes</a>
             </div>
+            <div class="col-md-4">
+                <a href="{{ route('formulario_crear') }}" class="btn btn-success btn-block">Ir a Formulario-Prueba</a>
+            </div>
         </div>
     </div>
 </body>
