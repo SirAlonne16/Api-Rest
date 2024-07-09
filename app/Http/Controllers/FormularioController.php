@@ -4,13 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Http\Requests\StoreClienteRequest;
+use App\Http\Requests\UpdateClienteRequest;
+use App\Http\Resources\ClienteCollection;
+use App\Http\Resources\ClienteResource;
 
-class ClienteController extends Controller
+class FormularioController extends Controller
 {
-    public function guardar_cliente(Request $request)
+    public function formularioCrear()
     {
-        // Validar los datos
-        $validatedData = $request->validate([
+        return view('crear_cliente');
+    }
+
+    public function guardarCliente(Request $request)
+    {
+        $request->validate([
             'nombre' => 'required|string|max:255',
             'fecha_nacimiento' => 'required|date',
             'rut' => 'required|string|max:255',
@@ -28,26 +36,108 @@ class ClienteController extends Controller
             'usuario' => 'required|string|max:6'
         ]);
 
-        // Crear un nuevo cliente
-        $cliente = new Cliente();
-        $cliente->nombre = $validatedData['nombre'];
-        $cliente->fecha_nacimiento = $validatedData['fecha_nacimiento'];
-        $cliente->rut = $validatedData['rut'];
-        $cliente->email = $validatedData['email'];
-        $cliente->telefono = $validatedData['telefono'];
-        $cliente->edad = $validatedData['edad'];
-        $cliente->direccion = $validatedData['direccion'];
-        $cliente->region = $validatedData['region'];
-        $cliente->comuna = $validatedData['comuna'];
-        $cliente->problemas_medicos = $validatedData['problemas_medicos'];
-        $cliente->problema_medico = $validatedData['problema_medico'];
-        $cliente->necesita_equipo = $validatedData['necesita_equipo'];
-        $cliente->tiene_experiencia = $validatedData['tiene_experiencia'];
-        $cliente->genero = $validatedData['genero'];
-        $cliente->usuario = $validatedData['usuario'];
+        $cliente = new Cliente;
+        $cliente->nombre = $request->nombre;
+        $cliente->fecha_nacimiento = $request->fecha_nacimiento;
+        $cliente->rut = $request->rut;
+        $cliente->email = $request->email;
+        $cliente->telefono = $request->telefono;
+        $cliente->edad = $request->edad;
+        $cliente->direccion = $request->direccion;
+        $cliente->region = $request->region;
+        $cliente->comuna = $request->comuna;
+        $cliente->problemas_medicos = $request->problemas_medicos;
+        $cliente->problema_medico = $request->problema_medico;
+        $cliente->necesita_equipo = $request->necesita_equipo;
+        $cliente->tiene_experiencia = $request->tiene_experiencia;
+        $cliente->genero = $request->genero;
+        $cliente->usuario = $request->usuario;
         $cliente->save();
+        
 
-        // Redirigir con un mensaje de éxito
-        return redirect()->route('formulario_crear')->with('success', 'Cliente creado exitosamente.');
+        return redirect()->route('formulario_crear_cliente')->with('success', 'Cliente creado exitosamente.');
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+        $clientes=Cliente::all();
+        return new ClienteCollection($clientes);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\StoreClienteRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreClienteRequest $request)
+    {
+        //
+        return new ClienteResource(Cliente::create($request->all()));
+        
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Cliente  $cliente
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Cliente $cliente)
+    {
+        //
+        return new  ClienteResource($cliente);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Cliente  $cliente
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Cliente $cliente)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateClienteRequest  $request
+     * @param  \App\Models\Cliente  $cliente
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateClienteRequest $request, Cliente $cliente)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Cliente  $cliente
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Cliente $cliente)
+    {
+        //
     }
 }
+
+
+
