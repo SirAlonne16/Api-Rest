@@ -48,6 +48,6 @@ class ClienteController extends Controller
         $cliente->save();
 
         // Redirigir con un mensaje de éxito
-        return redirect()->back()->with('success', 'Cliente guardado exitosamente');
+        return redirect()->route('formulario_crear')->with('success', 'Cliente creado exitosamente.');
     }
 }
