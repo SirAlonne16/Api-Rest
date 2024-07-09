@@ -1,156 +1,150 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Crear Cliente</title>
     <!-- Incluir jQuery desde una CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Estilos CSS para el formulario -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type=text],
+        input[type=email],
+        input[type=number],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        select {
+            height: 40px;
+        }
+
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
     <!-- Incluir un script para cargar regiones y comunas -->
     <script>
-        $(document).ready(function() {
-            // Aquí puedes cargar dinámicamente las regiones y comunas de Chile
-            const regionesComunas = {
-                "Region1": ["Comuna1", "Comuna2"],
-                "Region2": ["Comuna3", "Comuna4"]
-                // Agrega todas las regiones y comunas aquí
-            };
-
-            const regionesSelect = $('#region');
-            const comunasSelect = $('#comuna');
-
-            // Cargar las regiones
-            for (const region in regionesComunas) {
-                regionesSelect.append(new Option(region, region));
-            }
-
-            // Cambiar las comunas según la región seleccionada
-            regionesSelect.change(function() {
-                const selectedRegion = $(this).val();
-                comunasSelect.empty();
-                regionesComunas[selectedRegion].forEach(comuna => {
-                    comunasSelect.append(new Option(comuna, comuna));
-                });
-            });
-
-            // Generar usuario
-            $('#nombre').on('input', function() {
-                generarUsuario();
-            });
-
-            function generarUsuario() {
-                var nombreCompleto = $('#nombre').val().trim();
-                var partes = nombreCompleto.split(' ');
-
-                if (partes.length >= 2) {
-                    var nombre = partes[0];
-                    var apellido = partes[1];
-                    var primerasLetrasNombre = nombre.substring(0, 3);
-                    var primerasLetrasApellido = apellido.substring(0, 3);
-                    var usuario = primerasLetrasNombre + primerasLetrasApellido;
-                    $('#usuario').text(usuario);
-                    $('#usuario_oculto').val(usuario);
-                } else {
-                    $('#usuario').text('');
-                    $('#usuario_oculto').val('');
-                }
-            }
-
-            // Mostrar u ocultar el campo de problema médico
-            $('#problemas_medicos').change(function() {
-                if ($(this).val() === 'Sí') {
-                    $('#problema_medico').show();
-                } else {
-                    $('#problema_medico').hide();
-                }
-            }).trigger('change');
-
-            $('#clienteForm').on('submit', function(event) {
-                event.preventDefault(); // Previene el envío del formulario
-
-                const necesitaEquipo = $('#necesita_equipo').val();
-                const actionUrl = $(this).attr('action');
-
-                $.post(actionUrl, $(this).serialize(), function(response) {
-                    if (necesitaEquipo === 'Sí') {
-                        window.location.href = 'http://skiclubweb-729587da3a63.herokuapp.com/comprar-arriendo';
-                    } else {
-                        alert('Formulario enviado correctamente.');
-                    }
-                });
-            });
-        });
+        // Tu script jQuery aquí...
     </script>
 </head>
+
 <body>
     <h1>Crear Cliente</h1>
     @if(session('success'))
         <div>{{ session('success') }}</div>
     @endif
-    <form method="post" action="{{ route('guardar_formulario') }}">
+    <form id="clienteForm" method="post" action="{{ route('guardar_formulario') }}">
         @csrf
-        <label for="nombre">Nombre completo:</label><br>
-        <input type="text" id="nombre" name="nombre"><br>
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" name="nombre">
 
-        <label for="fecha_nacimiento">Fecha de nacimiento:</label><br>
-        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento"><br>
+        <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
 
-        <label for="rut">Rut:</label><br>
-        <input type="text" id="rut" name="rut"><br>
+        <label for="rut">Rut:</label>
+        <input type="text" id="rut" name="rut">
 
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email"><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
 
-        <label for="telefono">Número de teléfono:</label><br>
-        <input type="text" id="telefono" name="telefono"><br>
+        <label for="telefono">Número de teléfono:</label>
+        <input type="text" id="telefono" name="telefono">
 
-        <label for="edad">Edad:</label><br>
-        <input type="number" id="edad" name="edad"><br>
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad">
 
-        <label for="direccion">Dirección:</label><br>
-        <input type="text" id="direccion" name="direccion"><br>
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion">
 
-        <label for="region">Región:</label><br>
+        <label for="region">Región:</label>
         <select id="region" name="region">
             <option value="">Selecciona una región</option>
-        </select><br>
+        </select>
 
-        <label for="comuna">Comuna:</label><br>
+        <label for="comuna">Comuna:</label>
         <select id="comuna" name="comuna">
             <option value="">Selecciona una comuna</option>
-        </select><br>
+        </select>
 
-        <label for="problemas_medicos">Problemas médicos:</label><br>
+        <label for="problemas_medicos">Problemas médicos:</label>
         <select id="problemas_medicos" name="problemas_medicos">
             <option value="No">No</option>
             <option value="Sí">Sí</option>
-        </select><br>
+        </select>
 
-        <label id="problema_medico_label" for="problema_medico" style="display: none;">Problema médico:</label><br>
-        <input type="text" id="problema_medico" name="problema_medico" style="display: none;"><br>
+        <label id="problema_medico_label" for="problema_medico" class="hidden">Problema médico:</label>
+        <input type="text" id="problema_medico" name="problema_medico" class="hidden">
 
-        <label for="necesita_equipo">¿Necesita equipo?</label><br>
+        <label for="necesita_equipo">¿Necesita equipo?</label>
         <select id="necesita_equipo" name="necesita_equipo">
             <option value="No">No</option>
             <option value="Sí">Sí</option>
-        </select><br>
+        </select>
 
-        <label for="tiene_experiencia">¿Tiene experiencia?</label><br>
+        <label for="tiene_experiencia">¿Tiene experiencia?</label>
         <select id="tiene_experiencia" name="tiene_experiencia">
             <option value="No">No</option>
             <option value="Sí">Sí</option>
-        </select><br>
+        </select>
 
-        <label for="genero">Género:</label><br>
+        <label for="genero">Género:</label>
         <select id="genero" name="genero">
             <option value="Otro">Otro</option>
             <option value="Masculino">Masculino</option>
             <option value="Femenino">Femenino</option>
-        </select><br>
+        </select>
 
-        <label for="usuario">Usuario:</label><br>
-        <span id="usuario"></span><br>
-        <input type="hidden" id="usuario_oculto" name="usuario"><br>
+        <label for="usuario">Usuario:</label>
+        <span id="usuario"></span>
+        <input type="hidden" id="usuario_oculto" name="usuario">
 
         <input type="submit" value="Guardar">
     </form>
 </body>
+
 </html>
